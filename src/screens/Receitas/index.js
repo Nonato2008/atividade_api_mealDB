@@ -26,10 +26,10 @@ export default function ReceitasScreen({ navigation }) {
         // Busca receitas que começam pela letra 'a'
         const response = await api.get('/search.php?f=a');
 
-        // Pega apenas as 20 primeiras
-        const firstTwenty = response.data.meals.slice(0, 20);
+        // Pega apenas as 5 primeiras
+        const firstFive = response.data.meals.slice(0, 5);
 
-        setMeals(firstTwenty);
+        setMeals(firstFive);
 
       } catch (error) {
 
