@@ -1,19 +1,29 @@
-import { useState, useEffect, useCallback } from "react";
-import {View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, Button} from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet, StatusBar } from 'react-native';
 
-export default function IncialScreen({ navigation }) {
+
+export default function InicialScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Bem-vindo ao APP de Receitas!</Text>
-      
-      <Text style={styles.description}>
-        Esse app tem como finalidade apenas mostrar o consumo de uma API pública e a exibição dos seus dados.
-      </Text>
+      <StatusBar barStyle="dark-content" backgroundColor="#f8f9fa" />
 
-      <Button
-        title="Ver Receitas"
-        onPress={() => navigation.navigate('Receitas')}
-      />
+      {/* Card central */}
+      <View style={styles.card}>
+        <Text style={styles.emoji}>🍳</Text>
+        
+        <Text style={styles.title}>Bem-vindo ao App de Receitas!</Text>
+        
+        <Text style={styles.description}>
+          Esse app tem como finalidade apenas mostrar o consumo de uma API pública e a exibição dos seus dados.
+        </Text>
+
+        <TouchableOpacity 
+          style={styles.button}
+          activeOpacity={0.8}
+          onPress={() => navigation.navigate('Receitas')}
+        >
+          <Text style={styles.buttonText}>Ver Receitas</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -21,21 +31,51 @@ export default function IncialScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#f0f2f5',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 20,
+    padding: 24,
+  },
+  card: {
+    width: '100%',
+    maxWidth: 380,
     backgroundColor: '#ffffff',
+    borderRadius: 20,
+    paddingVertical: 36,
+    paddingHorizontal: 28,
+    alignItems: 'center',
+    
+  },
+  emoji: {
+    fontSize: 48,
+    marginBottom: 16,
   },
   title: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    marginBottom: 16,
+    fontSize: 24,
+    fontWeight: '700',
+    color: '#1a1a1a',
     textAlign: 'center',
+    marginBottom: 14,
+    lineHeight: 32,
   },
   description: {
-    fontSize: 16,
+    fontSize: 15,
+    color: '#666',
     textAlign: 'center',
-    marginBottom: 30,
-    color: '#555',
+    lineHeight: 22,
+    marginBottom: 32,
+  },
+  button: {
+    backgroundColor: '#ff6b35',
+    paddingVertical: 14,
+    paddingHorizontal: 40,
+    borderRadius: 12,
+    width: '100%',
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: '600',
   },
 });
